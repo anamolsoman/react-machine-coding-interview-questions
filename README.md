@@ -1,1 +1,3 @@
-# react-machine-coding-interview-questions
+# React-Machine-Coding-Interview-Questions
+
+- Star Rating Component
