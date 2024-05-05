@@ -55,6 +55,9 @@ function StarRating() {
 
   return (
     <div>
+      <div class="custom-tooltip" title="This is a custom tooltip">
+        Hover over me
+      </div>
       {stars.map((star, i) => {
         return (
           <Star
