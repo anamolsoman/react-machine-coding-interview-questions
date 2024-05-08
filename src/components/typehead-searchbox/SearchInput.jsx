@@ -1,5 +1,5 @@
-import { useState } from "react";
-
+import { useEffect, useState } from "react";
+import useFetchPromise from "./useFetchPromise";
 function SearchInput({
   id,
   name,
@@ -12,11 +12,16 @@ function SearchInput({
   listBox,
   noItemMessage,
   errorMessage,
+  transformData,
 }) {
   const [query, setQuery] = useState("");
+  const [data, setError, error] = useFetchPromise(query, transformData);
   const handleChange = (event) => {
     setQuery(event.target.value);
   };
+  useEffect(() => {
+    console.log(data);
+  }, [data]);
 
   return (
     <>
@@ -30,6 +35,7 @@ function SearchInput({
         value={query}
         onChange={handleChange}
       ></input>
+      {data && data.length > 0 && listBox(data)}
     </>
   );
 }

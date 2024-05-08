@@ -1,6 +1,8 @@
 import SearchInput from "./SearchInput";
 import ListBox from "./ListBox";
 function SearchBox() {
+  const transformData = (data) => data.results;
+
   return (
     <div>
       <SearchInput
@@ -15,6 +17,7 @@ function SearchBox() {
         listBox={(items) => <ListBox items={items} />}
         noItemMessage={() => <div>Sorry No items found</div>}
         errorMessage={() => <div>Something went wrong</div>}
+        transformData={transformData}
       />
     </div>
   );
