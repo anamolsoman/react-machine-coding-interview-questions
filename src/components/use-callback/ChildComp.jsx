@@ -1,11 +1,7 @@
 function ChildComp({ increment }) {
   console.log("child component rendered");
 
-  return (
-    <div>
-      <button onClick={increment}>Increment</button>
-    </div>
-  );
+  return <div>{increment}</div>;
 }
 
 export default ChildComp;
