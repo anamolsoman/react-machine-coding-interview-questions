@@ -1,4 +1,5 @@
 import "./App.css";
+import Accordian from "./components/accordian/Accordian";
 import Debounce from "./components/debounce/Debounce";
 // import StarRating from "./components/star-rating/StarRating";
 // import SearchBox from "./components/typehead-searchbox/SearchBox";
@@ -14,7 +15,8 @@ function App() {
       {/* <ParentComp /> */}
       {/* <UseReducerCounter /> */}
       {/* <UseRefComp /> */}
-      <Debounce />
+      {/* <Debounce /> */}
+      <Accordian />
     </div>
   );
 }
