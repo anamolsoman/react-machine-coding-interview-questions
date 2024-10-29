@@ -1,6 +1,7 @@
 import "./App.css";
-import Accordian from "./components/accordian/Accordian";
-import Debounce from "./components/debounce/Debounce";
+import TicTacToe from "./components/tictactoe/TicTacToe";
+// import Accordian from "./components/accordian/Accordian";
+// import Debounce from "./components/debounce/Debounce";
 // import StarRating from "./components/star-rating/StarRating";
 // import SearchBox from "./components/typehead-searchbox/SearchBox";
 // import ParentComp from "./components/use-callback/ParentComp";
@@ -16,7 +17,8 @@ function App() {
       {/* <UseReducerCounter /> */}
       {/* <UseRefComp /> */}
       {/* <Debounce /> */}
-      <Accordian />
+      {/* <Accordian /> */}
+      <TicTacToe />
     </div>
   );
 }
