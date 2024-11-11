@@ -8,6 +8,27 @@ function Star({ onMouseEnter, onMouseLeave, onClick, rating, starId }) {
         onMouseLeave={onMouseLeave}
         onClick={onClick}
         className="star-icon"
+        xmlns="http://www.w3.org/2000/svg"
+        fill="none"
+        viewBox="0 0 24 24"
+        width="200px"
+        stroke-width="1.5"
+        stroke="currentColor"
+        class="size-10 cursor-pointer"
+      >
+        <path
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          fill={starId <= rating ? "yellow" : "white"}
+          d="M11.48 3.499a.562.562 0 0 1 1.04 0l2.125 5.111a.563.563 0 0 0 .475.345l5.518.442c.499.04.701.663.321.988l-4.204 3.602a.563.563 0 0 0-.182.557l1.285 5.385a.562.562 0 0 1-.84.61l-4.725-2.885a.562.562 0 0 0-.586 0L6.982 20.54a.562.562 0 0 1-.84-.61l1.285-5.386a.562.562 0 0 0-.182-.557l-4.204-3.602a.562.562 0 0 1 .321-.988l5.518-.442a.563.563 0 0 0 .475-.345L11.48 3.5Z"
+        />
+      </svg>
+
+      {/* <svg
+        onMouseEnter={onMouseEnter}
+        onMouseLeave={onMouseLeave}
+        onClick={onClick}
+        className="star-icon"
         width="32"
         height="32"
         viewBox="0 0 32 32"
@@ -39,7 +60,7 @@ function Star({ onMouseEnter, onMouseLeave, onClick, rating, starId }) {
           strokeLinecap="round"
           strokeLinejoin="round"
         />
-      </svg>
+      </svg> */}
     </>
   );
 }
@@ -54,22 +75,25 @@ function StarRating() {
   }, [hoverState, rating]);
 
   return (
-    <div>
-      <div class="custom-tooltip" title="This is a custom tooltip">
-        Hover over me
+    <div className="flex flex-col justify-center items-center min-h-screen">
+      Rating is {rating + 1}/5
+      <div className="flex">
+        {stars.map((star, i) => {
+          return (
+            <Star
+              rating={hoverState || rating}
+              onMouseEnter={() => setHoverState(i)}
+              onMouseLeave={() => setHoverState(0)}
+              onClick={() => setRating(i)}
+              key={i}
+              starId={i}
+            />
+          );
+        })}
       </div>
-      {stars.map((star, i) => {
-        return (
-          <Star
-            rating={hoverState || rating}
-            onMouseEnter={() => setHoverState(i)}
-            onMouseLeave={() => setHoverState(0)}
-            onClick={() => setRating(i)}
-            key={i}
-            starId={i}
-          />
-        );
-      })}
+      {/* <div class="custom-tooltip" title="This is a custom tooltip">
+        Hover over me
+      </div> */}
     </div>
   );
 }

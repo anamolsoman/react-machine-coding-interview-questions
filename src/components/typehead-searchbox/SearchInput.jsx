@@ -19,9 +19,7 @@ function SearchInput({
   const handleChange = (event) => {
     setQuery(event.target.value);
   };
-  useEffect(() => {
-    console.log(data);
-  }, [data]);
+
 
   return (
     <>

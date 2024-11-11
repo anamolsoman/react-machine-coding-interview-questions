@@ -41,7 +41,6 @@ function useTicTacToe() {
     const winner = checkWinner(board);
 
     if (winner) return `Player ${winner} Wins`;
-    console.log(board);
     if (!board.includes(null)) return "Match Is Draw";
 
     return `Player ${isXNext ? "X" : "O"} Turn`;
