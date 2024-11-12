@@ -29,6 +29,25 @@ function TodoList() {
   );
   const [updatedTodos, setUpdatedTodos] = useState(todos);
   const [filter, setFilter] = useState("all");
+  const [addTodo, setAddTodo] = useState(false);
+  const [taskDetails, setTaskDetails] = useState({
+    name: "",
+    priority: "",
+    deadline: "",
+    finished: "",
+  });
+
+  console.log(taskDetails);
+
+  const handleInputChange = (e) => {
+    const { name, value } = e.target;
+    console.log(name, value);
+    setTaskDetails((prev) => ({
+      ...prev,
+      [name]: value,
+    }));
+  };
+
   const deleteTodo = (id) => {
     setUpdatedTodos(updatedTodos.filter((todo) => todo.id !== id));
   };
@@ -66,66 +85,90 @@ function TodoList() {
     <div className="min-h-screen flex flex-col justify-center items-center bg-gray-100">
       <div className="min-w-[700px] w-[80%] ">
         <div className="text-3xl">Todo List</div>
-        <div className="flex justify-between py-3">
-          <button className="px-2 py-1 border text-white bg-green-600">
+        {addTodo ? (
+          <div>
             Add Task
-          </button>
-          <select value={filter} onChange={handleFilter}>
-            <option value="all">All</option>
-            <option value="finished">Finished</option>
-            <option value="pending">Pending</option>
-          </select>
-        </div>
-        <div className=" bg-gray-300 rounded p-3">
-          {updatedTodos &&
-            updatedTodos.map((todo) => {
-              return (
-                <div
-                  className="bg-white min-h-[50px] my-4 flex cursor-pointer"
-                  onClick={() => handleSelectedTodo(todo.id)}
-                >
-                  <div className="p-3">
-                    <input type="checkbox" checked={todo.finished}></input>
-                  </div>
-                  <div className="flex-auto p-1">
-                    <div className="flex justify-start font-semibold text-1xl text-gray-700">
-                      {todo.finished ? (
-                        <strike>
-                          {todo.name.charAt(0).toUpperCase() +
-                            todo.name.slice(1)}
-                        </strike>
-                      ) : (
-                        todo.name.charAt(0).toUpperCase() + todo.name.slice(1)
-                      )}
-                    </div>
-                    <div className="flex justify-start text-1xl text-gray-700">
-                      {todo.deadline}
-                    </div>
-                  </div>
-                  <div className="p-3 ">
-                    <button
-                      className="mx-2  px-3 bg-blue-600 text-white"
-                      onClick={() => updateTask(todo.id)}
+            <input
+              name="name"
+              value={taskDetails.name}
+              onChange={(e) => handleInputChange(e)}
+            ></input>
+            <button
+              className="px-2 py-1 border text-white bg-green-600"
+              onClick={() => setAddTodo(false)}
+            >
+              Cancel
+            </button>
+          </div>
+        ) : (
+          <div className="">
+            {" "}
+            <div className="flex justify-between py-3 ">
+              <button
+                className="px-2 py-1 border text-white bg-green-600"
+                onClick={() => setAddTodo(true)}
+              >
+                Add Task
+              </button>
+              <select value={filter} onChange={handleFilter}>
+                <option value="all">All</option>
+                <option value="finished">Finished</option>
+                <option value="pending">Pending</option>
+              </select>
+            </div>
+            <div className=" bg-gray-300 rounded p-3">
+              {updatedTodos &&
+                updatedTodos.map((todo) => {
+                  return (
+                    <div
+                      className="bg-white min-h-[50px] my-4 flex cursor-pointer"
+                      onClick={() => handleSelectedTodo(todo.id)}
                     >
-                      Edit
-                    </button>
-                    <button
-                      className="mx-2  px-3 bg-red-600 text-white"
-                      onClick={(e) => {
-                        e.stopPropagation();
-                        deleteTodo(todo.id);
-                      }}
-                    >
-                      Delete
-                    </button>
-                  </div>
-                </div>
-              );
-            })}
-          {updatedTodos && updatedTodos.length === 0 && (
-            <div>No Tasks Available</div>
-          )}
-        </div>
+                      <div className="p-3">
+                        <input type="checkbox" checked={todo.finished}></input>
+                      </div>
+                      <div className="flex-auto p-1">
+                        <div className="flex justify-start font-semibold text-1xl text-gray-700">
+                          {todo.finished ? (
+                            <strike>
+                              {todo.name.charAt(0).toUpperCase() +
+                                todo.name.slice(1)}
+                            </strike>
+                          ) : (
+                            todo.name.charAt(0).toUpperCase() +
+                            todo.name.slice(1)
+                          )}
+                        </div>
+                        <div className="flex justify-start text-1xl text-gray-700">
+                          {todo.deadline}
+                        </div>
+                      </div>
+                      <div className="p-3 ">
+                        <button
+                          className="mx-2  px-3 bg-blue-600 text-white"
+                          onClick={() => updateTask(todo.id)}
+                        >
+                          Edit
+                        </button>
+                        <button
+                          className="mx-2  px-3 bg-red-600 text-white"
+                          onClick={(e) => {
+                            e.stopPropagation();
+                            deleteTodo(todo.id);
+                          }}
+                        >
+                          Delete
+                        </button>
+                      </div>
+                    </div>
+                  );
+                })}
+              {updatedTodos && updatedTodos.length === 0 && (
+                <div>No Tasks Available</div>
+              )}
+            </div>
+          </div>
+        )}
       </div>
     </div>
   );

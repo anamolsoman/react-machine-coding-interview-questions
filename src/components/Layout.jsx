@@ -17,7 +17,7 @@ function Layout() {
         return (
           <Link
             to={link.route}
-            className="min-h-[200px] hover:bg-blue-700 text-3xl  border flex justify-center items-center"
+            className="min-h-[200px] hover:bg-blue-700 bg-blue-500 text-3xl text-white border flex justify-center items-center"
           >
             {link.name}
           </Link>

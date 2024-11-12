@@ -75,7 +75,7 @@ function StarRating() {
   }, [hoverState, rating]);
 
   return (
-    <div className="flex flex-col justify-center items-center min-h-screen">
+    <div className="flex flex-col justify-center items-center min-h-screen bg-gray-100">
       Rating is {rating + 1}/5
       <div className="flex">
         {stars.map((star, i) => {

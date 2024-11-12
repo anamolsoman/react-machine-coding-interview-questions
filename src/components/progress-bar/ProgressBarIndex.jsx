@@ -3,12 +3,12 @@ import ProgressBar from "./ProgressBar";
 
 function ProgressBarIndex() {
   const [progress, setProgress] = useState(0);
-  const [progressSpeed, setProgressSpeed] = useState(500);
+  const [progressSpeed, setProgressSpeed] = useState(50);
 
   let interval = useRef(null);
 
   const handleProgress = () => {
-    setProgress((prev) => prev + 5);
+    setProgress((prev) => prev + 1);
   };
 
   const startProgress = () => {
@@ -30,7 +30,7 @@ function ProgressBarIndex() {
   //   }, []);
 
   return (
-    <div className="p-4 flex justify-center items-center flex-col">
+    <div className="p-4 flex justify-center items-center flex-col min-h-screen bg-gray-100">
       <div className="text-2xl">Progress Bar</div>
       <ProgressBar value={progress} max="100" />
       <div>
@@ -46,10 +46,10 @@ function ProgressBarIndex() {
         >
           Stop
         </button>{" "}
-        <button className="border px-3 mx-2 " onClick={startProgress}>
+        <button className="border px-3 mx-2 bg-white" onClick={startProgress}>
           Resume
         </button>
-        <button className="border px-3 mx-2 " onClick={resetProgress}>
+        <button className="border px-3 mx-2 bg-white" onClick={resetProgress}>
           Restart
         </button>
       </div>
