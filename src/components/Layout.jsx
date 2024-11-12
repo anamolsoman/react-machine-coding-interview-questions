@@ -9,6 +9,7 @@ function Layout() {
     { route: "tic-tac-toe", name: "Tic Tac Toe Game" },
     { route: "accordian", name: "Accordian" },
     { route: "carousel", name: "Carousel" },
+    { route: "todo-list", name: "Todo List" },
   ];
   return (
     <div className="h-screen grid grid-cols-3">
@@ -16,7 +17,7 @@ function Layout() {
         return (
           <Link
             to={link.route}
-            className="min-h-[200px] bg-blue-600 hover:bg-blue-700 text-3xl text-white border flex justify-center items-center"
+            className="min-h-[200px] hover:bg-blue-700 text-3xl  border flex justify-center items-center"
           >
             {link.name}
           </Link>

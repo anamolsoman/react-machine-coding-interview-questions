@@ -14,6 +14,7 @@ import StarRating from "./components/star-rating/StarRating";
 import Typehead from "./components/typehead/typehead";
 import ProgressBarIndex from "./components/progress-bar/ProgressBarIndex";
 import Carousel from "./components/carousel/Carousel";
+import TodoList from "./components/todo-list/TodoList";
 
 function App() {
   return (
@@ -27,6 +28,7 @@ function App() {
           <Route path="/typehead" element={<Typehead />} />
           <Route path="/progress-bar" element={<ProgressBarIndex />} />
           <Route path="/carousel" element={<Carousel />} />
+          <Route path="/todo-list" element={<TodoList />} />
           {/* <SearchBox /> */}
           {/* <ParentComp /> */}
           {/* <UseReducerCounter /> */}
