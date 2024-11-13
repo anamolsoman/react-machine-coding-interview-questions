@@ -31,25 +31,44 @@ function TodoList() {
   const [filter, setFilter] = useState("all");
   const [addTodo, setAddTodo] = useState(false);
   const [taskDetails, setTaskDetails] = useState({
+    id: "",
     name: "",
     priority: "",
     deadline: "",
-    finished: "",
+    finished: false,
   });
 
-  console.log(taskDetails);
+  useEffect(() => {
+    console.log(taskDetails);
+  }, [taskDetails]);
+
+  const lastRecord = () => {
+    return updatedTodos[updatedTodos?.length - 1]?.id;
+  };
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
-    console.log(name, value);
+    console.log(value);
     setTaskDetails((prev) => ({
       ...prev,
       [name]: value,
+      id: Number(lastRecord()) + 1,
     }));
+  };
+
+  const addTodoObj = (todo) => {
+    setUpdatedTodos([...updatedTodos, todo]);
+    setAddTodo(false);
   };
 
   const deleteTodo = (id) => {
     setUpdatedTodos(updatedTodos.filter((todo) => todo.id !== id));
+  };
+
+  const editTask = (id) => {
+    const task = updatedTodos.find((todo) => todo.id === id);
+    setTaskDetails(task);
+    setAddTodo(true);
   };
 
   const updateTask = (id) => {};
@@ -88,17 +107,54 @@ function TodoList() {
         {addTodo ? (
           <div>
             Add Task
-            <input
-              name="name"
-              value={taskDetails.name}
-              onChange={(e) => handleInputChange(e)}
-            ></input>
-            <button
-              className="px-2 py-1 border text-white bg-green-600"
-              onClick={() => setAddTodo(false)}
-            >
-              Cancel
-            </button>
+            <div className="bg-gray-300 rounded p-3">
+              <div className="grid grid-cols-6 gap-2">
+                <input
+                  className="col-span-2 p-1"
+                  name="name"
+                  placeholder="Enter Task"
+                  value={taskDetails.name}
+                  onChange={(e) => handleInputChange(e)}
+                ></input>{" "}
+                {/* <input
+                  className=" p-1"
+                  name="priority"
+                  placeholder="Select Priority"
+                  value={taskDetails.priority}
+                  onChange={(e) => handleInputChange(e)}
+                ></input>{" "} */}
+                <select
+                  value={taskDetails.priority}
+                  onChange={(e) => handleInputChange(e)}
+                  name="priority"
+                >
+                  {" "}
+                  <option value="Moderate">Moderate</option>
+                  <option value="High">High</option>
+                  <option value="Low">Low</option>
+                </select>
+                <input
+                  type="date"
+                  className=" p-1"
+                  name="deadline"
+                  placeholder="Select Deadline"
+                  value={taskDetails.deadline}
+                  onChange={(e) => handleInputChange(e)}
+                ></input>{" "}
+                <button
+                  className="px-2 py-1  text-white bg-green-600"
+                  onClick={() => addTodoObj(taskDetails)}
+                >
+                  Save
+                </button>
+                <button
+                  className="px-2 py-1  text-white bg-green-600"
+                  onClick={() => setAddTodo(false)}
+                >
+                  Cancel
+                </button>
+              </div>
+            </div>
           </div>
         ) : (
           <div className="">
@@ -146,7 +202,10 @@ function TodoList() {
                       <div className="p-3 ">
                         <button
                           className="mx-2  px-3 bg-blue-600 text-white"
-                          onClick={() => updateTask(todo.id)}
+                          onClick={(e) => {
+                            e.stopPropagation();
+                            editTask(todo.id);
+                          }}
                         >
                           Edit
                         </button>

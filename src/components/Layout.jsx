@@ -11,6 +11,7 @@ function Layout() {
     { route: "carousel", name: "Carousel" },
     { route: "todo-list", name: "Todo List" },
     { route: "file-explorer", name: "File Explorer" },
+    { route: "otp", name: "Otp" },
   ];
   return (
     <div className="h-screen grid grid-cols-3">

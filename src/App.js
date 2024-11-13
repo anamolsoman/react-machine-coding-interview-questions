@@ -16,6 +16,7 @@ import ProgressBarIndex from "./components/progress-bar/ProgressBarIndex";
 import Carousel from "./components/carousel/Carousel";
 import TodoList from "./components/todo-list/TodoList";
 import FileExplorerIndex from "./components/file-explorer/FileExplorerIndex";
+import Otp from "./components/otp/Otp";
 
 function App() {
   return (
@@ -27,6 +28,7 @@ function App() {
           <Route path="/accordian" element={<Accordian />} />
           <Route path="/tic-tac-toe" element={<TicTacToe />} />
           <Route path="/typehead" element={<Typehead />} />
+          <Route path="/otp" element={<Otp />} />
           <Route path="/progress-bar" element={<ProgressBarIndex />} />
           <Route path="/carousel" element={<Carousel />} />
           <Route path="/todo-list" element={<TodoList />} />
