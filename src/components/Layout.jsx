@@ -10,6 +10,7 @@ function Layout() {
     { route: "accordian", name: "Accordian" },
     { route: "carousel", name: "Carousel" },
     { route: "todo-list", name: "Todo List" },
+    { route: "file-explorer", name: "File Explorer" },
   ];
   return (
     <div className="h-screen grid grid-cols-3">
