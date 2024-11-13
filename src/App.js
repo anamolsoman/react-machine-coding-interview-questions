@@ -15,7 +15,7 @@ import Typehead from "./components/typehead/typehead";
 import ProgressBarIndex from "./components/progress-bar/ProgressBarIndex";
 import Carousel from "./components/carousel/Carousel";
 import TodoList from "./components/todo-list/TodoList";
-import FileExplorer from "./components/file-explorer/FileExplorer";
+import FileExplorerIndex from "./components/file-explorer/FileExplorerIndex";
 
 function App() {
   return (
@@ -30,7 +30,7 @@ function App() {
           <Route path="/progress-bar" element={<ProgressBarIndex />} />
           <Route path="/carousel" element={<Carousel />} />
           <Route path="/todo-list" element={<TodoList />} />
-          <Route path="/file-explorer" element={<FileExplorer />} />
+          <Route path="/file-explorer" element={<FileExplorerIndex />} />
           {/* <SearchBox /> */}
           {/* <ParentComp /> */}
           {/* <UseReducerCounter /> */}
