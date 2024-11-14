@@ -4,10 +4,16 @@ function Otp() {
   const [otpFields, setOtpFields] = useState(new Array(6).fill(""));
   const [numberValidation, setNumberValidation] = useState(false);
   const ref = useRef([]);
-  console.log(ref);
   const handleKeyUp = (e, index) => {
     let copyOtpFields = [...otpFields];
     const key = e.key;
+    if (key === "Backspace") {
+      if (index - 1 >= 0) ref.current[index - 1].focus();
+      copyOtpFields[index] = "";
+      setOtpFields(copyOtpFields);
+      setNumberValidation(false);
+      return;
+    }
     if (isNaN(key)) {
       setNumberValidation(true);
       return;
@@ -19,6 +25,7 @@ function Otp() {
   };
   return (
     <div className="flex flex-col justify-center items-center min-h-screen bg-gray-200">
+      <div className="mb-2 text-2xl">Enter your OTP</div>
       <div>
         {otpFields.map((field, index) => {
           return (
