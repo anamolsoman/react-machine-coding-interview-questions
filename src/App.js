@@ -17,6 +17,7 @@ import Carousel from "./components/carousel/Carousel";
 import TodoList from "./components/todo-list/TodoList";
 import FileExplorerIndex from "./components/file-explorer/FileExplorerIndex";
 import Otp from "./components/otp/Otp";
+import GridLights from "./components/grid-lights/GridLights";
 
 function App() {
   return (
@@ -33,6 +34,7 @@ function App() {
           <Route path="/carousel" element={<Carousel />} />
           <Route path="/todo-list" element={<TodoList />} />
           <Route path="/file-explorer" element={<FileExplorerIndex />} />
+          <Route path="/grid-lights" element={<GridLights />} />
           {/* <SearchBox /> */}
           {/* <ParentComp /> */}
           {/* <UseReducerCounter /> */}

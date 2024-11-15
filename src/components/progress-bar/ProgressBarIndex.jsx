@@ -20,7 +20,6 @@ function ProgressBarIndex() {
     clearInterval(interval);
   };
 
-  console.log(interval);
   //   useEffect(() => {
   //     interval.current = setInterval(handleProgress, progressSpeed);
 
@@ -31,7 +30,7 @@ function ProgressBarIndex() {
 
   return (
     <div className="p-4 flex justify-center items-center flex-col min-h-screen bg-gray-100">
-      <div className="text-2xl">Progress Bar</div>
+      <div className="text-2xl">Progress Bar {progress}%</div>
       <ProgressBar value={progress} max="100" />
       <div>
         <button
