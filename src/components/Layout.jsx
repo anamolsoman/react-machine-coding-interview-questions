@@ -14,6 +14,7 @@ function Layout() {
     { route: "otp", name: "Otp" },
     { route: "grid-lights", name: "Grid Lights" },
     { route: "toast", name: "Toast" },
+    { route: "infinite-scroll", name: "InfiniteScroll" },
   ];
   return (
     <div className="h-screen grid grid-cols-3">

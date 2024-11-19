@@ -19,7 +19,7 @@ import FileExplorerIndex from "./components/file-explorer/FileExplorerIndex";
 import Otp from "./components/otp/Otp";
 import GridLights from "./components/grid-lights/GridLights2";
 import ToastContainer from "./components/toast/ToastContainer";
-
+import InfiniteScroll from "./components/infinite-scroll/InfiniteScroll";
 function App() {
   return (
     <Router>
@@ -37,6 +37,7 @@ function App() {
           <Route path="/file-explorer" element={<FileExplorerIndex />} />
           <Route path="/grid-lights" element={<GridLights />} />
           <Route path="/toast" element={<ToastContainer />} />
+          <Route path="/infinite-scroll" element={<InfiniteScroll />} />
           {/* <SearchBox /> */}
           {/* <ParentComp /> */}
           {/* <UseReducerCounter /> */}
