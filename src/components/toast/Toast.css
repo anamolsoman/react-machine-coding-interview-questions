@@ -1,0 +1,36 @@
+.toast-actions > button {
+  border: 1px solid gray;
+  padding: 5px 10px 5px 10px;
+  margin: 5px;
+  border-radius: 5px;
+  color: white;
+}
+
+.success {
+  background-color: green;
+}
+.info {
+  background-color: blue;
+}
+.warning {
+  background-color: yellow;
+  color: black !important;
+}
+.error {
+  background-color: red;
+}
+
+.toast-container {
+  position: absolute;
+  right: 1rem;
+  top: 1rem;
+}
+.toast {
+  background-color: green;
+  display: flex;
+  min-width: 300px;
+  justify-content: space-between;
+  padding: 0.5rem;
+  margin: 0.5rem;
+  border-radius: 5px;
+}

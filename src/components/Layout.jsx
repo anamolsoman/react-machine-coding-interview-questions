@@ -13,6 +13,7 @@ function Layout() {
     { route: "file-explorer", name: "File Explorer" },
     { route: "otp", name: "Otp" },
     { route: "grid-lights", name: "Grid Lights" },
+    { route: "toast", name: "Toast" },
   ];
   return (
     <div className="h-screen grid grid-cols-3">
