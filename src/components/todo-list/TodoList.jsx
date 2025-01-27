@@ -1,5 +1,6 @@
 import React, { useEffect, useState, useMemo } from "react";
-
+import { useSelector, useDispatch } from "react-redux";
+import { addTask, deleteTodo, ToggleTodo } from "../../redux/todoSlice";
 function TodoList() {
   let todos = useMemo(
     () => [
@@ -28,8 +29,11 @@ function TodoList() {
     []
   );
   const [updatedTodos, setUpdatedTodos] = useState(todos);
+  const storeTodos = useSelector((state) => state.todos);
   const [filter, setFilter] = useState("all");
   const [addTodo, setAddTodo] = useState(false);
+  const dispatch = useDispatch();
+
   const [taskDetails, setTaskDetails] = useState({
     id: "",
     name: "",
@@ -39,8 +43,8 @@ function TodoList() {
   });
 
   useEffect(() => {
-    console.log(taskDetails);
-  }, [taskDetails]);
+    console.log(storeTodos, "storeTodos");
+  }, [storeTodos]);
 
   const lastRecord = () => {
     return updatedTodos[updatedTodos?.length - 1]?.id;
@@ -58,6 +62,7 @@ function TodoList() {
 
   const addTodoObj = (todo) => {
     setUpdatedTodos([...updatedTodos, todo]);
+    dispatch(addTask(todo));
     setAddTodo(false);
   };
 
