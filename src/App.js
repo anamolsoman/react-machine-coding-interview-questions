@@ -12,7 +12,7 @@ import StarRating from "./components/star-rating/StarRating";
 // import UseReducerCounter from "./components/useReducer/UseReducerCounter";
 // import UseRefComp from "./components/useRef/UseRefComp";
 import Typehead from "./components/typehead/typehead";
-import ProgressBarIndex from "./components/progress-bar/ProgressBarIndex";
+import ProgressBarIndex from "./components/progress-bar/ProgressBarPractice";
 import Carousel from "./components/carousel/Carousel";
 import TodoList from "./components/todo-list/TodoList";
 import FileExplorerIndex from "./components/file-explorer/FileExplorerIndex";

@@ -4,6 +4,7 @@ function Otp() {
   const [otpFields, setOtpFields] = useState(new Array(6).fill(""));
   const [numberValidation, setNumberValidation] = useState(false);
   const ref = useRef([]);
+  
   const handleKeyUp = (e, index) => {
     let copyOtpFields = [...otpFields];
     const key = e.key;
