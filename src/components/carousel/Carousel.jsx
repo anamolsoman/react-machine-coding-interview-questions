@@ -1,6 +1,8 @@
 import React, { useState } from "react";
-import CarouselImg from "./song.png";
+import CarouselImg1 from "./song.png";
 
+const CarouselImg =
+  "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRQE9Fnz2sPJ1YwC6ILqvfO7nBXrBnjT9pr2A&s";
 // const images = [
 //   {
 //     src: "https://picsum.photos/id/600/600/400",
@@ -28,14 +30,17 @@ import CarouselImg from "./song.png";
 //   },
 // ];
 const cards = [
-  { id: 1, image: CarouselImg },
-  { id: 2, image: CarouselImg },
+  {
+    id: 1,
+    image: CarouselImg,
+  },
+  { id: 2, image: CarouselImg1 },
   { id: 3, image: CarouselImg },
-  { id: 4, image: CarouselImg },
+  { id: 4, image: CarouselImg1 },
   { id: 5, image: CarouselImg },
-  { id: 6, image: CarouselImg },
+  { id: 6, image: CarouselImg1 },
   { id: 7, image: CarouselImg },
-  { id: 8, image: CarouselImg },
+  { id: 8, image: CarouselImg1 },
   { id: 9, image: CarouselImg },
   { id: 10, image: CarouselImg },
 ];

@@ -1,7 +1,8 @@
 import "./App.css";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Layout from "./components/Layout";
-import TicTacToe from "./components/tictactoe/TicTacToe";
+// import TicTacToe from "./components/tictactoe/TicTacToe";
+import TicTacToe from "./components/tictactoe/TicTacToePractice";
 import Accordian from "./components/accordian/Accordian";
 import Debounce from "./components/debounce/Debounce";
 // import Throttling from "./components/throttling/Throttling";
@@ -15,11 +16,13 @@ import Typehead from "./components/typehead/typehead";
 import ProgressBarIndex from "./components/progress-bar/ProgressBarPractice";
 import Carousel from "./components/carousel/Carousel";
 import TodoList from "./components/todo-list/TodoList";
-import FileExplorerIndex from "./components/file-explorer/FileExplorerIndex";
+// import FileExplorerIndex from "./components/file-explorer/FileExplorerIndex";
+import FileExplorerIndex from "./components/file-explorer/FileExplorerPractice";
 import Otp from "./components/otp/Otp";
 import GridLights from "./components/grid-lights/GridLights2";
 import ToastContainer from "./components/toast/ToastContainer";
-import InfiniteScroll from "./components/infinite-scroll/InfiniteScroll";
+// import InfiniteScroll from "./components/infinite-scroll/InfiniteScroll";
+import InfiniteScroll from "./components/infinite-scroll/InfiniteScrollPractice";
 function App() {
   return (
     <Router>

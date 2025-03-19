@@ -1,0 +1,17 @@
+.layout {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  flex-direction: column;
+}
+.board {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+}
+.box {
+  height: 100px;
+  width: 100px;
+  border: 1px solid grey;
+  cursor: pointer;
+}
