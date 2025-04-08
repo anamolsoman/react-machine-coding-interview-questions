@@ -51,17 +51,18 @@ function Products() {
   };
 
   useEffect(() => {
-    if (Object.values(categories).includes(true)) {
-      let filteredRes = products.filter(
-        (product) =>
-          product.category.toUpperCase() ==
-          checkIfCategorySelected(product.category.toUpperCase())
+    const activeCategories = Object.keys(categories).filter(
+      (key) => categories[key]
+    );
+    if (activeCategories.length > 0) {
+      let filteredRes = products.filter((product) =>
+        activeCategories.includes(product.category.toUpperCase())
       );
       setFilteredProducts([...filteredRes]);
     } else {
       setFilteredProducts(products);
     }
-  }, [categories]);
+  }, [categories, products]);
 
   return (
     <div id="products">
