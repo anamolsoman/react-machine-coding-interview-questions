@@ -15,6 +15,7 @@ function Layout() {
     { route: "grid-lights", name: "Grid Lights" },
     { route: "toast", name: "Toast" },
     { route: "infinite-scroll", name: "InfiniteScroll" },
+    { route: "products", name: "Products" },
   ];
 
   return (

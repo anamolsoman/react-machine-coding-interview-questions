@@ -23,6 +23,7 @@ import GridLights from "./components/grid-lights/GridLights2";
 import ToastContainer from "./components/toast/ToastContainer";
 // import InfiniteScroll from "./components/infinite-scroll/InfiniteScroll";
 import InfiniteScroll from "./components/infinite-scroll/InfiniteScrollPractice";
+import Products from "./components/products/Products";
 function App() {
   return (
     <Router>
@@ -41,6 +42,7 @@ function App() {
           <Route path="/grid-lights" element={<GridLights />} />
           <Route path="/toast" element={<ToastContainer />} />
           <Route path="/infinite-scroll" element={<InfiniteScroll />} />
+          <Route path="/products" element={<Products />} />
           {/* <SearchBox /> */}
           {/* <ParentComp /> */}
           {/* <UseReducerCounter /> */}
