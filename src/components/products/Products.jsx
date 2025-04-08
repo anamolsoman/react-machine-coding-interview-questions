@@ -29,10 +29,16 @@ function Products() {
   };
 
   useEffect(() => {
-    let res = products.filter((product) =>
-      product.title.toLowerCase().includes(searchKey.toLowerCase())
-    );
-    setFilteredProducts([...res]);
+    const searchProducts = async () => {
+      await fetch(`https://dummyjson.com/products/search?q=${searchKey}`)
+        .then((res) => res.json())
+        .then((data) => setFilteredProducts(data.products));
+    };
+    searchProducts();
+    // let res = products.filter((product) =>
+    //   product.title.toLowerCase().includes(searchKey.toLowerCase())
+    // );
+    // setFilteredProducts([...res]);
   }, [searchKey, products]);
 
   const handleCategoryClick = (category) => {
