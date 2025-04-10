@@ -11,9 +11,19 @@ function Products() {
     FURNITURE: false,
     FRAGRANCES: false,
   });
-  const [filters, setFilters] = useState({
-    InStock: false,
-  });
+
+  const sortByPrice = () => {
+    const res = products.sort((a, b) => a.price - b.price);
+    setProducts([...res]);
+  };
+
+  const handleCategoryClick = (category) => {
+    setCategories({
+      ...categories,
+      [category]: !categories[category],
+    });
+  };
+
   useEffect(() => {
     const fetchProducts = async () => {
       await fetch("https://dummyjson.com/products")
@@ -23,11 +33,6 @@ function Products() {
     fetchProducts();
   }, []);
 
-  const sortByPrice = () => {
-    const res = products.sort((a, b) => a.price - b.price);
-    setProducts([...res]);
-  };
-
   useEffect(() => {
     const searchProducts = async () => {
       await fetch(`https://dummyjson.com/products/search?q=${searchKey}`)
@@ -35,26 +40,28 @@ function Products() {
         .then((data) => setFilteredProducts(data.products));
     };
     searchProducts();
-    // let res = products.filter((product) =>
-    //   product.title.toLowerCase().includes(searchKey.toLowerCase())
-    // );
-    // setFilteredProducts([...res]);
   }, [searchKey, products]);
 
-  const handleCategoryClick = (category) => {
-    setCategories({
-      ...categories,
-      [category]: !categories[category],
-    });
-  };
+  useEffect(() => {
+    const handleScroll = (e) => {
+      console.log(
+        window.innerHeight,
+        document.documentElement.scrollTop,
+        document.documentElement.scrollHeight
+      );
+      if (
+        window.innerHeight + document.documentElement.scrollTop >=
+        document.documentElement.scrollHeight - 100
+      ) {
+        console.log("you are at bottom");
+      }
+    };
+    window.addEventListener("scroll", handleScroll);
 
-  const checkIfCategorySelected = (category) => {
-    console.log(categories[category]);
-    if (categories[category]) {
-      return category;
-    }
-    return false;
-  };
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
 
   useEffect(() => {
     const activeCategories = Object.keys(categories).filter(
@@ -104,7 +111,7 @@ function Products() {
         {filteredProducts.map((product) => {
           return (
             <div className="product" key={product.id}>
-              <div>{/* <img src={product.thumbnail} alt="product" /> */}</div>
+              {/* <div><img src={product.thumbnail} alt="product" /></div> */}
               <div>{product.title}</div>
               <div className="product-info">
                 <div className="price">{product.price}$</div>

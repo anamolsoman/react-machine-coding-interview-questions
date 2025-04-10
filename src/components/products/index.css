@@ -14,7 +14,8 @@
   gap: 10px;
 }
 .product {
-  height: 200px;
+  min-height: 250px;
+  /* max-height: 450px; */
   box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.1); /* Simple shadow */
 }
 .product-info {
