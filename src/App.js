@@ -22,7 +22,7 @@ import Otp from "./components/otp/Otp";
 import GridLights from "./components/grid-lights/GridLights2";
 import ToastContainer from "./components/toast/ToastContainer";
 // import InfiniteScroll from "./components/infinite-scroll/InfiniteScroll";
-import InfiniteScroll from "./components/infinite-scroll/InfiniteScrollPractice";
+import InfiniteScroll from "./components/infinite-scroll/InfiniteScroll";
 import Products from "./components/products/Products";
 function App() {
   return (

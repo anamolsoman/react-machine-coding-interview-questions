@@ -1,47 +1,59 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
+// import "./styles.css";
 
-function InfiniteScroll() {
-  const [data, setData] = useState([]);
-  const [page, setPage] = useState(1);
-
-  useEffect(() => {
-    fetch(`https://picsum.photos/v2/list?page=${page}&limit=3`)
-      .then((res) => res.json())
-      .then((data) => setData((prevData) => [...prevData, ...data]));
-  }, [page]);
+export default function App() {
+  const [products, setProducts] = useState([]);
+  const [totalProducts, setTotalProducts] = useState(0);
+  const [limit, setLimit] = useState(10);
 
   useEffect(() => {
-    let observer = new IntersectionObserver(
-      (param) => {
-        if (param[0].isIntersecting) {
-          observer.unobserve(target);
-          setPage((page) => page + 1);
+    const getAllProducts = async () => {
+      await fetch(`https://dummyjson.com/products?limit=${limit}`)
+        .then((res) => res.json())
+        .then((data) => {
+          setProducts(data.products);
+          setTotalProducts(data.total);
+          console.log(data);
+        });
+    };
+    getAllProducts();
+  }, [limit]);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      if (
+        window.innerHeight + document.documentElement.scrollTop >=
+        document.documentElement.offsetHeight
+      ) {
+        if (products.length <= totalProducts) {
+          setLimit((limit) => limit + 10);
         }
-      },
-      { threshold: 0.5 }
-    );
-    let target = document.querySelector(".item-image:last-child");
+      }
+    };
 
-    console.log(target, "target");
-    if (target) {
-      observer.observe(target);
-    }
-  }, [data]);
+    window.addEventListener("scroll", handleScroll);
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
 
   return (
-    <div className="">
-      {data?.map((item, index) => {
-        return (
-          <img
-            alt="item"
-            key={index}
-            src={item.download_url}
-            className="h-[300px] w-[200px] m-2 item-image"
-          />
-        );
-      })}
+    <div className="App">
+      <h1>Infinite Scroll</h1>
+      {products &&
+        products.map((product) => {
+          return (
+            <div key={product.id}>
+              <div className="min-h-[100px]">
+                <h2>
+                  {product.title} - ${product.price}
+                </h2>
+                <p>{product.description}</p>
+              </div>
+            </div>
+          );
+        })}
     </div>
   );
 }
-
-export default InfiniteScroll;
